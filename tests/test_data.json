@@ -1,0 +1,30 @@
+{
+    "AI/Machine Learning": {
+        "Content Identification": {
+            "Object Recognition": {
+                "Body part tracking": {
+                    "Body Pose Tracking": {
+                        "PoseNET": {}
+                    },
+                    "Hand Tracking": {
+                        "Apple Vision Framework": {}
+                    },
+                    "Facial Tracking": {}
+                },
+                "Segmentation": {},
+                "OpenCV": {},
+                "YOLO": {}
+            },
+            "Data Analytics/Classification": {
+                "t-SNE": {}
+            },
+            "Text Analysis": {
+                "Sentiment Analysis": {}
+            },
+            "Audio Classification": {},
+            "Voice Recognition": {
+                "Speech to Text": {}
+            }
+        }
+    }
+}
