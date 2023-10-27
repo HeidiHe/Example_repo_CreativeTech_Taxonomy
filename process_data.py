@@ -9,26 +9,33 @@ class EachLayer():
     # The class "constructor" - It's actually an initializer 
     def __init__(self, name, children):
         self.name = name
-        self.children = children
-
+        if children is not None :
+            self.children = children
+        
+    # obsolete function
     def __repr__(self):
-        return f"<name:{self.name} children:{self.children}>"
+        if self.children:
+            print(self.children)
+            return f"<name:{self.name} children:{self.children}>"
+        else:
+            return f"<name:{self.name}"
 
 # a recursive function that formats data into D3's hierachy
 def format_data(curData):
-    for eachKey in curData.keys():
+    currCildren = []
+    for eachKey in curData.keys(): # loop over the keys in children
         print(eachKey)
         # if curData has children
         if curData.get(eachKey):
-            return EachLayer(eachKey, format_data(curData.get(eachKey)))
+            currCildren.append(EachLayer(eachKey, format_data(curData.get(eachKey))))
         else:
-            finalData =  EachLayer(eachKey, "none")
-            return finalData
+            currCildren.append(EachLayer(eachKey, None))
+    return currCildren
 
 
-processedData = format_data(data)
+processedData = format_data(data).pop()
 # print(repr(processedData))
-print(processedData.__dict__)
+# print(processedData.__dict__)
 # write nested class to json in python: https://www.geeksforgeeks.org/serialize-and-deserialize-complex-json-in-python/ 
 final_data = json.dumps(processedData.__dict__, default=lambda o: o.__dict__, indent=4)
 print(final_data)

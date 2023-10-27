@@ -1,28 +1,96 @@
 
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
-const data = {
-    "name": "AI/Machine Learning",
-    "children": [{
-        "name": "Content Identification",
-        "children": [{
-            "name": "Object Recognition",
-            "children": [{
-                "name": "Body part tracking",
-                "children": [{
-                    "name": "Body Pose Tracking",
-                    "children": [{
-                        "name": "PoseNET",
-                        "name": "TEST"
-                    }]
-                }]
-            }]
-        }]
-    }]
-  };
+// const data = {
+//   "name": "AI/Machine Learning",
+//   "children": [
+//       {
+//           "name": "Content Identification",
+//           "children": [
+//               {
+//                   "name": "Object Recognition",
+//                   "children": [
+//                       {
+//                           "name": "Body part tracking",
+//                           "children": [
+//                               {
+//                                   "name": "Body Pose Tracking",
+//                                   "children": [
+//                                       {
+//                                           "name": "PoseNET"
+//                                       }
+//                                   ]
+//                               },
+//                               {
+//                                   "name": "Hand Tracking",
+//                                   "children": [
+//                                       {
+//                                           "name": "Apple Vision Framework"
+//                                       }
+//                                   ]
+//                               },
+//                               {
+//                                   "name": "Facial Tracking"
+//                               }
+//                           ]
+//                       },
+//                       {
+//                           "name": "Segmentation"
+//                       },
+//                       {
+//                           "name": "OpenCV"
+//                       },
+//                       {
+//                           "name": "YOLO"
+//                       }
+//                   ]
+//               },
+//               {
+//                   "name": "Data Analytics/Classification",
+//                   "children": [
+//                       {
+//                           "name": "t-SNE"
+//                       }
+//                   ]
+//               },
+//               {
+//                   "name": "Text Analysis",
+//                   "children": [
+//                       {
+//                           "name": "Sentiment Analysis"
+//                       }
+//                   ]
+//               },
+//               {
+//                   "name": "Audio Classification"
+//               },
+//               {
+//                   "name": "Voice Recognition",
+//                   "children": [
+//                       {
+//                           "name": "Speech to Text"
+//                       }
+//                   ]
+//               }
+//           ]
+//       }
+//   ]
+// };
+
+let data;
+
+fetch('./processed_data.json')
+.then(response => {
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
+})
+.then(data => {console.log(data); create_visualization(data)})
+.catch(error => console.log(error));
 
 
-    // Specify the charts’ dimensions. The height is variable, depending on the layout.
+function create_visualization(data){    // Specify the charts’ dimensions. The height is variable, depending on the layout.
     const width = 928;
     const marginTop = 10;
     const marginRight = 10;
@@ -163,4 +231,5 @@ const data = {
    update(null, root);
   
   container.append(svg.node());
+}
    

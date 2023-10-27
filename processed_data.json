@@ -1,19 +1,75 @@
 {
     "name": "AI/Machine Learning",
-    "children": {
-        "name": "Content Identification",
-        "children": {
-            "name": "Object Recognition",
-            "children": {
-                "name": "Body part tracking",
-                "children": {
-                    "name": "Body Pose Tracking",
-                    "children": {
-                        "name": "PoseNET",
-                        "children": "none"
-                    }
+    "children": [
+        {
+            "name": "Content Identification",
+            "children": [
+                {
+                    "name": "Object Recognition",
+                    "children": [
+                        {
+                            "name": "Body part tracking",
+                            "children": [
+                                {
+                                    "name": "Body Pose Tracking",
+                                    "children": [
+                                        {
+                                            "name": "PoseNET"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Hand Tracking",
+                                    "children": [
+                                        {
+                                            "name": "Apple Vision Framework"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Facial Tracking"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Segmentation"
+                        },
+                        {
+                            "name": "OpenCV"
+                        },
+                        {
+                            "name": "YOLO"
+                        }
+                    ]
+                },
+                {
+                    "name": "Data Analytics/Classification",
+                    "children": [
+                        {
+                            "name": "t-SNE"
+                        }
+                    ]
+                },
+                {
+                    "name": "Text Analysis",
+                    "children": [
+                        {
+                            "name": "Sentiment Analysis"
+                        }
+                    ]
+                },
+                {
+                    "name": "Audio Classification"
+                },
+                {
+                    "name": "Voice Recognition",
+                    "children": [
+                        {
+                            "name": "Speech to Text"
+                        }
+                    ]
                 }
-            }
+            ]
         }
-    }
+    ]
 }
