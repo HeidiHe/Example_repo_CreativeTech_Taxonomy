@@ -1,82 +1,6 @@
 
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
-// const data = {
-//   "name": "AI/Machine Learning",
-//   "children": [
-//       {
-//           "name": "Content Identification",
-//           "children": [
-//               {
-//                   "name": "Object Recognition",
-//                   "children": [
-//                       {
-//                           "name": "Body part tracking",
-//                           "children": [
-//                               {
-//                                   "name": "Body Pose Tracking",
-//                                   "children": [
-//                                       {
-//                                           "name": "PoseNET"
-//                                       }
-//                                   ]
-//                               },
-//                               {
-//                                   "name": "Hand Tracking",
-//                                   "children": [
-//                                       {
-//                                           "name": "Apple Vision Framework"
-//                                       }
-//                                   ]
-//                               },
-//                               {
-//                                   "name": "Facial Tracking"
-//                               }
-//                           ]
-//                       },
-//                       {
-//                           "name": "Segmentation"
-//                       },
-//                       {
-//                           "name": "OpenCV"
-//                       },
-//                       {
-//                           "name": "YOLO"
-//                       }
-//                   ]
-//               },
-//               {
-//                   "name": "Data Analytics/Classification",
-//                   "children": [
-//                       {
-//                           "name": "t-SNE"
-//                       }
-//                   ]
-//               },
-//               {
-//                   "name": "Text Analysis",
-//                   "children": [
-//                       {
-//                           "name": "Sentiment Analysis"
-//                       }
-//                   ]
-//               },
-//               {
-//                   "name": "Audio Classification"
-//               },
-//               {
-//                   "name": "Voice Recognition",
-//                   "children": [
-//                       {
-//                           "name": "Speech to Text"
-//                       }
-//                   ]
-//               }
-//           ]
-//       }
-//   ]
-// };
-
 let data;
 
 fetch('./processed_data.json')
@@ -91,18 +15,19 @@ fetch('./processed_data.json')
 
 
 function create_visualization(data){    // Specify the charts’ dimensions. The height is variable, depending on the layout.
-    const width = 928;
+    const width = 1080;
     const marginTop = 10;
     const marginRight = 10;
     const marginBottom = 10;
-    const marginLeft = 40;
+    const marginLeft = 100;
   
     // Rows are separated by dx pixels, columns by dy pixels. These names can be counter-intuitive
     // (dx is a height, and dy a width). This because the tree must be viewed with the root at the
     // “bottom”, in the data domain. The width of a column is based on the tree’s height.
     const root = d3.hierarchy(data);
-    const dx = 10;
-    const dy = (width - marginRight - marginLeft) / (1 + root.height);
+    const dx = 20;
+    // const dy = (width - marginRight - marginLeft) / (1 + root.height);
+    const dy = 120;
   
     // Define the tree layout and the shape for links.
     const tree = d3.tree().nodeSize([dx, dy]);

@@ -5,7 +5,8 @@
 1. First run the python script to process the data to D3 readable format:
 `python process_data.py`
 
-2. then use an http server to host the website:
+2. then use an http server to host the website: 
+`http-server -a localhost -p 8000 -c-1`
 
 ## To see it on the repo page:
 1. push any changes
