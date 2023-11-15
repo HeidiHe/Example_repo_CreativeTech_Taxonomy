@@ -1,3 +1,5 @@
+# This file converts all original data into a format that can be used by D3.js
+
 import json
  
 # Opening JSON file
@@ -20,14 +22,6 @@ class EachLayer():
         else:
             return f"<name:{self.name}"
 
-# def format_all_data(data):
-#     # print(data)
-#     allChildren = []
-#     for eachKey in data.keys(): # loop over the first layer
-#         allChildren.append(EachLayer(eachKey, format_data(data.get(eachKey))))
-        
-#     return allChildren
-
 # a recursive function that formats data into D3's hierachy
 def format_data(curData):
     
@@ -41,18 +35,13 @@ def format_data(curData):
         else:
             currCildren.append(EachLayer(eachKey, None))
 
-
     return currCildren
 
 
 
 processedData = format_data(data) 
-
 processedData = {"name":"creative tech", "children": processedData}
 
-# print(repr(processedData))
-# print(processedData.__dict__)
-# write nested class to json in python: https://www.geeksforgeeks.org/serialize-and-deserialize-complex-json-in-python/ 
 final_data = json.dumps(processedData, default=lambda o: o.__dict__, indent=4)
 print(final_data)
 
