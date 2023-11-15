@@ -2533,6 +2533,147 @@
                     ]
                 },
                 {
+                    "name": "Language Type",
+                    "children": [
+                        {
+                            "name": "Node Based/Visual",
+                            "children": [
+                                {
+                                    "name": "Isadora"
+                                },
+                                {
+                                    "name": "Cables.gl"
+                                },
+                                {
+                                    "name": "vvvv"
+                                },
+                                {
+                                    "name": "Vuo"
+                                },
+                                {
+                                    "name": "Nodebox"
+                                },
+                                {
+                                    "name": "nodes.io"
+                                },
+                                {
+                                    "name": "Pure Data(pd)"
+                                },
+                                {
+                                    "name": "Max"
+                                },
+                                {
+                                    "name": "Notch"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "C++",
+                            "children": [
+                                {
+                                    "name": "OpenFrameworks"
+                                },
+                                {
+                                    "name": "Cinder"
+                                },
+                                {
+                                    "name": "Nap Framework"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Kotlin",
+                            "children": [
+                                {
+                                    "name": "OPENRNDR"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Ruby",
+                            "children": [
+                                {
+                                    "name": "Visor"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Rust",
+                            "children": [
+                                {
+                                    "name": "Nannou"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Python",
+                            "children": [
+                                {
+                                    "name": "Processing.py"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Javascript",
+                            "children": [
+                                {
+                                    "name": "p5.js"
+                                },
+                                {
+                                    "name": "three.js"
+                                },
+                                {
+                                    "name": "paper.js"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Legacy/Deprecated Tools",
+                            "children": [
+                                {
+                                    "name": "Flash"
+                                },
+                                {
+                                    "name": "Macromedia Director"
+                                },
+                                {
+                                    "name": "Quartz Composer"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Java",
+                            "children": [
+                                {
+                                    "name": "Processing"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Low Level Graphics",
+                            "children": [
+                                {
+                                    "name": "Metal"
+                                },
+                                {
+                                    "name": "DirectX"
+                                },
+                                {
+                                    "name": "OpenGL",
+                                    "children": [
+                                        {
+                                            "name": "WebGL"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "name": "Vulkan"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
                     "name": "Use Cases",
                     "children": [
                         {
