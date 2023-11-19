@@ -13,21 +13,67 @@ fetch('./processed_data.json')
 .then(data => {console.log(data); create_visualization(data)})
 .catch(error => console.log(error));
 
+function color(d) {
+  const creativeCodeColor = "red";
+  const AimlColor = "blue";
+  const UncategorizedUtilsColor = "purple";
+
+  //color all the nodes
+  function checkAncestors(node, name) {
+    if (!node) {
+      return false;
+    }
+    if (node.data.name === name) {
+      return true;
+    }
+    return checkAncestors(node.parent, name);
+  }
+
+  if (checkAncestors(d, "Creative Code Frameworks")) {
+    return "pink";
+  } else if (checkAncestors(d, "Real-time 3D/Game Engines")) {
+    return "deepskyblue";
+  } else if (checkAncestors(d, "AI/Machine Learning")) {
+    return "red";
+  }  else if (checkAncestors(d, "Uncategorized Utilities/DevOps")) {
+    return "firebrick";
+  } else if (checkAncestors(d, "Pro AV Hardware and Related Software")) {
+    return "darksalmon";
+  } else if (checkAncestors(d, "Optical Tracking")) {
+    return "darkmagenta";
+  } else if (checkAncestors(d, "Sensors/Interaction Methods")) {
+    return "darkviolet";
+  } else if (checkAncestors(d, "Physical Computing")) {
+    return "lightblue";
+  } else if (checkAncestors(d, "Web/Networking Frameworks")) {
+      return "limegreen";
+  } else if (checkAncestors(d, "Mobile Technology")) {
+    return "gold";
+  } else if (checkAncestors(d, "Asset Creation")) {
+    return "deeppink";
+  }else {
+    return d._children ? "#555" : "#999"; // Default color
+  }
+}
+
+//document.body.style.backgroundColor = "black";
 
 function create_visualization(data){    // Specify the charts’ dimensions. The height is variable, depending on the layout.
     const width = 3000;
-    const marginTop = 10;
+    const marginTop = 100;
     const marginRight = 10;
     const marginBottom = 10;
-    const marginLeft = 100;
+    const marginLeft = 200;
+    const fontSize = 30; // Adjust the font size as needed
+    const circleRadius = 7.5; // Adjust the circle radius as needed
   
     // Rows are separated by dx pixels, columns by dy pixels. These names can be counter-intuitive
     // (dx is a height, and dy a width). This because the tree must be viewed with the root at the
     // “bottom”, in the data domain. The width of a column is based on the tree’s height.
     const root = d3.hierarchy(data);
-    const dx = 25;
+    const dx = 45;
     // const dy = (width - marginRight - marginLeft) / (1 + root.height);
-    const dy = 300;
+    const dy = 500;
   
     // Define the tree layout and the shape for links.
     const tree = d3.tree().nodeSize([dx, dy]);
@@ -38,7 +84,7 @@ function create_visualization(data){    // Specify the charts’ dimensions. The
         .attr("width", width)
         .attr("height", dx)
         .attr("viewBox", [-marginLeft, -marginTop, width, dx])
-        .attr("style", "max-width: 100%; height: auto; font: 20px sans-serif; user-select: none;");
+        .attr("style", "max-width: 100%; height: auto; font: 30px Source Sans Pro; user-select: none;");
   
     const gLink = svg.append("g")
         .attr("fill", "none")
@@ -78,6 +124,7 @@ function create_visualization(data){    // Specify the charts’ dimensions. The
         .data(nodes, d => d.id);
   
       // Enter any new nodes at the parent's previous position.
+      
       const nodeEnter = node.enter().append("g")
           .attr("transform", d => `translate(${source.y0},${source.x0})`)
           .attr("fill-opacity", 0)
@@ -86,22 +133,57 @@ function create_visualization(data){    // Specify the charts’ dimensions. The
             d.children = d.children ? null : d._children;
             update(event, d);
           });
-  
+
+      /*
+      //this box isnt working yet
+      nodeEnter.append("rect")
+          .attr("rx", 5) // Adjust the x-radius for rounded corners
+          .attr("ry", 5) // Adjust the y-radius for rounded corners
+          .attr("width", d => d.data.name.length * fontSize) // Adjust the width based on text length and font size
+          .attr("height", fontSize + 4) // Adjust the height as needed (font size + padding)
+          .attr("fill", "lightgray") // Adjust the background color
+          .attr("x", d => (d._children ? -1 : 1) * ((d.data.name.length * fontSize) / 2)) // Center the rect around the text
+          .attr("y", -fontSize / 2); // Center the rect vertically around the text
+      */    
       nodeEnter.append("circle")
-          .attr("r", 2.5)
-          .attr("fill", d => d._children ? "#555" : "#999")
-          .attr("stroke-width", 10);
+          .attr("r", circleRadius)
+          .attr("fill", color)
+          .attr("stroke-width", 20);
   
       nodeEnter.append("text")
           .attr("dy", "0.31em")
-          .attr("x", d => d._children ? -6 : 6)
+          .attr("x", d => d._children ? -12 : 12)
           .attr("text-anchor", d => d._children ? "end" : "start")
+          //.attr("text-anchor", "middle")
           .text(d => d.data.name)
-        .clone(true).lower()
+
+      nodeEnter.select("text")
+          .clone(true).lower()
           .attr("stroke-linejoin", "round")
-          .attr("stroke-width", 3)
+          .attr("stroke-width", 20)
           .attr("stroke", "white");
-  
+
+      /*
+      //to implement later - how to add things to nodes
+      nodeEnter.select("circle")
+      .on("click", (event, d) => {
+        const newNodeName = prompt("Enter the name for the new node:");
+        if (newNodeName) {
+          // Create a new node
+          const newNode = { name: newNodeName, children: [] };
+    
+          // Add the new node as a child of the clicked node
+          if (!d.children) d.children = [];
+          d.children.push(newNode);
+    
+          // Update the hierarchy and visualization
+          const newRoot = d3.hierarchy(data);
+          tree(newRoot);
+          update(event, newRoot);
+        }
+      });
+      */
+
       // Transition nodes to their new position.
       const nodeUpdate = node.merge(nodeEnter).transition(transition)
           .attr("transform", d => `translate(${d.y},${d.x})`)
@@ -123,11 +205,15 @@ function create_visualization(data){    // Specify the charts’ dimensions. The
           .attr("d", d => {
             const o = {x: source.x0, y: source.y0};
             return diagonal({source: o, target: o});
-          });
+          })
+          .attr("stroke-width", 5)
+          .attr("stroke", d => color(d.source)); // Set link color to the same color as nodes
+
   
       // Transition links to their new position.
       link.merge(linkEnter).transition(transition)
-          .attr("d", diagonal);
+          .attr("d", diagonal)
+          .attr("stroke", d => color(d.source)); // Set link color to the same color as nodes
   
       // Transition exiting nodes to the parent's new position.
       link.exit().transition(transition).remove()
