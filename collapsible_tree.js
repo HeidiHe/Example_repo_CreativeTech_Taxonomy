@@ -138,16 +138,14 @@ function create_visualization(data){    // Specify the charts’ dimensions. The
           });
 
       
-  
-
-      // TODO: check upper case vs lower case -- so that the bounding box is more accurate
+      // add warping box around text node
       nodeEnter.append("rect")
         .attr("rx", 5) // Adjust the x-radius for rounded corners
         .attr("ry", 5) // Adjust the y-radius for rounded corners
-        .attr("width", d =>d.data.name.length * (fontSize-4) + 10) // Adjust the width based on text length and font size
+        .attr("width", d =>d.data.name.length * (fontSize-5) + 20) // Adjust the width based on text length and font size
         .attr("height", fontSize + 4) // Adjust the height as needed (font size + padding)
         .attr("fill", "lightgray") // Adjust the background color
-        .attr("x", d => d._children ? -d.data.name.length * (fontSize-4) -10 : 5) // Center the rect around the text
+        .attr("x", d => d._children ? -d.data.name.length * (fontSize-5) -20 : 5) // Center the rect around the text
         .attr("y", -(fontSize + 4)/2) // Center the rect vertically around the text
         .attr('fill', color)
         .attr("opacity", d => d._children ? 0: 0.5)
