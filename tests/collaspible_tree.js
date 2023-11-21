@@ -38,7 +38,8 @@ function create_visualization(data){    // Specify the charts’ dimensions. The
         .attr("width", width)
         .attr("height", dx)
         .attr("viewBox", [-marginLeft, -marginTop, width, dx])
-        .attr("style", "max-width: 100%; height: auto; font: 10px sans-serif; user-select: none;");
+        // .attr("style", "max-width: 100%; height: auto; font: 10px sans-serif; user-select: none;");
+        .attr("style", "max-width: auto; height: auto; font: 12px sans-serif;");
   
     const gLink = svg.append("g")
         .attr("fill", "none")

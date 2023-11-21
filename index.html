@@ -4,14 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <style>
+        body {
+            overflow-x: scroll;
+            white-space: nowrap;
+        }
+
+        #container {
+            width: auto;
+            height: 100%;
+            overflow-x: scroll;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="container"></div>
-    <!-- <script type="module" src="visualize_data.js"> </script> -->
-    <script type="module" src="collapsible_tree.js"> </script>
-    <!-- <script type="module" src="visualize_data_test.js"> </script> -->
-    <!-- <script type="module" src="test_visualization.js"></script> -->
+    <div id="container">
+        <script type="module" src="collapsible_tree.js"> </script>
+    </div>
 </body>
 
 </html>

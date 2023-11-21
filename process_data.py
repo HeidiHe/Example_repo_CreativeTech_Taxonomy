@@ -9,7 +9,7 @@ processedData = None
 
 class EachLayer():
     # The class "constructor" - It's actually an initializer 
-    def __init__(self, name, children):
+    def __init__(self, name, children):d
         self.name = name
         if children is not None :
             self.children = children
@@ -40,7 +40,7 @@ def format_data(curData):
 
 
 processedData = format_data(data) 
-processedData = {"name":"creative tech", "children": processedData}
+processedData = {"name":"Creative Tech Taxonomy", "children": processedData}
 
 final_data = json.dumps(processedData, default=lambda o: o.__dict__, indent=4)
 print(final_data)
