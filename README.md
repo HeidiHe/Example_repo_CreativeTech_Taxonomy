@@ -10,7 +10,7 @@
 
 ## To see it on the repo page:
 1. push any changes
-2. go to [link](https://heidihe.github.io/Example_repo_CreativeTech_Taxonomy/)
+2. go to [link](https://heidihe.github.io/Experiment_Repo_on_CreativeTech_Taxonomy/)
 3. note that it will takes a while for the page to reflect the change from current push
 
 
